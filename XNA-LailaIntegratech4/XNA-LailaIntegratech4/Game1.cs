@@ -19,6 +19,15 @@ namespace XNA_LailaIntegratech4
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        enum GameStates { TitleScreen, Playing, PlayerDead, GameOver };
+        GameStates gameState = GameStates.Playing;
+        
+        Texture2D spriteSheet;
+
+       
+        PlayerManager playerManager;
+        
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -47,6 +56,23 @@ namespace XNA_LailaIntegratech4
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+
+            spriteSheet = Content.Load<Texture2D>(@"sprites_map_laila");
+
+           
+
+            playerManager = new PlayerManager(
+                spriteSheet,    
+                new Rectangle(0, 150, 50, 50),    
+                3,
+                new Rectangle(
+                    0,
+                    0,
+                    this.Window.ClientBounds.Width,
+                    this.Window.ClientBounds.Height));
+
+           
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -72,6 +98,24 @@ namespace XNA_LailaIntegratech4
 
             // TODO: Add your update logic here
 
+            switch (gameState)
+            {
+                case GameStates.TitleScreen:
+                    break;
+
+                case GameStates.Playing:
+                   
+                    playerManager.Update(gameTime);
+                   
+                    break;
+
+                case GameStates.PlayerDead:
+                    break;
+
+                case GameStates.GameOver:
+                    break;
+            }
+
             base.Update(gameTime);
         }
 
@@ -84,6 +128,28 @@ namespace XNA_LailaIntegratech4
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            spriteBatch.Begin();
+
+            if (gameState == GameStates.TitleScreen)
+            {
+                // nothing
+            }
+
+            if ((gameState == GameStates.Playing) ||
+                (gameState == GameStates.PlayerDead) ||
+                (gameState == GameStates.GameOver))
+            {
+                
+                playerManager.Draw(spriteBatch);
+                
+            }
+
+            if ((gameState == GameStates.GameOver))
+            {
+            }
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
