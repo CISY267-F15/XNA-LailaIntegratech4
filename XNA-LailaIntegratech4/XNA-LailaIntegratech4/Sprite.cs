@@ -153,6 +153,7 @@ namespace XNA_LailaIntegratech4
             }
 
             location += (velocity * elapsed);
+        
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

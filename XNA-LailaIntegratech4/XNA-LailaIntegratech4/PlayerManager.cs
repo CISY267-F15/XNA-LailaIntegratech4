@@ -31,7 +31,7 @@ namespace XNA_LailaIntegratech4
             Rectangle screenBounds)
         {
             playerSprite = new Sprite(
-                new Vector2(500, 500),
+                new Vector2(200, 200),
                 texture,
                 initialFrame,
                 Vector2.Zero);
@@ -41,7 +41,7 @@ namespace XNA_LailaIntegratech4
             playerAreaLimit =
                 new Rectangle(
                     0,
-                    screenBounds.Height,
+                    0,
                     screenBounds.Width,
                     screenBounds.Height);
 

@@ -63,8 +63,8 @@ namespace XNA_LailaIntegratech4
 
             playerManager = new PlayerManager(
                 spriteSheet,    
-                new Rectangle(0, 150, 50, 50),    
-                3,
+                new Rectangle(0, 0, 63, 128),    
+                5,
                 new Rectangle(
                     0,
                     0,
@@ -142,6 +142,7 @@ namespace XNA_LailaIntegratech4
             {
                 
                 playerManager.Draw(spriteBatch);
+ 
                 
             }
 
